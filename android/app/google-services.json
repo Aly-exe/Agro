@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "204606211916",
+    "project_id": "kamha-15aea",
+    "storage_bucket": "kamha-15aea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204606211916:android:25032ab9ec018752afb1e9",
+        "android_client_info": {
+          "package_name": "com.example.agro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiyUpb1UchkgO1OiC9DTwFdLp2l6BF2Ro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

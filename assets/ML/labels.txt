@@ -1,0 +1,4 @@
+0 Crown and Root Rot
+1 Healthy Wheat
+2 Leaf Rust
+3 Wheat Loose Smut
