@@ -1,10 +1,10 @@
 import 'package:agro/Bloc/bloc.dart';
 import 'package:agro/Bloc/registerandloginBloc/registerandloginBloc.dart';
 import 'package:agro/Bloc/states.dart';
+import 'package:agro/features/classify/presentation/views/homescreen.dart';
 import 'package:agro/firebase_options.dart';
 import 'package:agro/generated/l10n.dart';
 import 'package:agro/services/sharedpreferences.dart';
-import 'package:agro/splachscreen.dart';
 import 'package:agro/widgets/restartwidget.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +13,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
-  WidgetsFlutterBinding
-      .ensureInitialized(); // ensure all lines before runAPP() executed to run App
+  WidgetsFlutterBinding.ensureInitialized(); // ensure all lines before runAPP() executed to run App
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -26,7 +25,7 @@ void main() async {
   CashHelper.getData(key: "lang") == null
       ? CashHelper.setData(key: "lang", value: "ar")
       : CashHelper.getData(key: "lang");
-  runApp(RestartWidget(child: MyApp()));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -34,37 +33,42 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-        providers: [
-          BlocProvider<LocaleManagementBloc>(
-            create: (context) => LocaleManagementBloc(),
-          ),
-          BlocProvider<RegisterAndLoginBloc>(
-            create: (context) => RegisterAndLoginBloc(),
-          ),
-        ],
-        child: BlocBuilder<LocaleManagementBloc, LocaleStates>(
-          builder: (context, state) {
-            // Locale? locale;
-            // if (state is UpdateLocaleState) {
-            //   locale = state.locale;
-            // }
-            return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              locale: Locale(
-                CashHelper.getData(key: "lang") ?? "ar",
-              ),
-              localizationsDelegates: [
-                S.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: S.delegate.supportedLocales,
-              title: "Wheat Classification",
-              home: SplachScreen(),
-            );
-          },
-        ));
+    // return MultiBlocProvider(
+    //     providers: [
+    //       BlocProvider<LocaleManagementBloc>(
+    //         create: (context) => LocaleManagementBloc(),
+    //       ),
+    //       BlocProvider<RegisterAndLoginBloc>(
+    //         create: (context) => RegisterAndLoginBloc(),
+    //       ),
+    //     ],
+    //     child: BlocBuilder<LocaleManagementBloc, LocaleStates>(
+    //       builder: (context, state) {
+    //         // Locale? locale;
+    //         // if (state is UpdateLocaleState) {
+    //         //   locale = state.locale;
+    //         // }
+    //         return MaterialApp(
+    //           debugShowCheckedModeBanner: false,
+    //           locale: Locale(
+    //             CashHelper.getData(key: "lang") ?? "ar",
+    //           ),
+    //           localizationsDelegates: [
+    //             S.delegate,
+    //             GlobalMaterialLocalizations.delegate,
+    //             GlobalWidgetsLocalizations.delegate,
+    //             GlobalCupertinoLocalizations.delegate,
+    //           ],
+    //           supportedLocales: S.delegate.supportedLocales,
+    //           title: "Wheat Classification",
+    //           home: Homescreen(),
+    //         );
+    //       },
+    //     ));
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Agro (wheat classification)",
+      home: Homescreen(),
+    );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:agro/features/classify/presentation/views/homescreen.dart';
 import 'package:agro/homepage.dart';
 import 'package:agro/login.dart';
 import 'package:agro/onboarding.dart';
@@ -15,11 +16,12 @@ class SplachScreen extends StatelessWidget {
       splash: Lottie.asset('assets/animation/Animation - 1711419248425.json'),
       splashIconSize: 240.0,
       duration: 6000,
-      nextScreen: CashHelper.getData(key: "onboarding") == "false"
-          ? CashHelper.getData(key: "UID") == null
-              ? loginScreen()
-              : HomePage()
-          : OnboardingScreen(), // CashHelper.getData(key: "ID") that's correct
+      // nextScreen: CashHelper.getData(key: "onboarding") == "false"
+      //     ? CashHelper.getData(key: "UID") == null
+      //         ? loginScreen()
+      //         : HomePage()
+      //     : OnboardingScreen(), // CashHelper.getData(key: "ID") that's correct
+      nextScreen: Homescreen(),
     );
   }
 }

@@ -106,7 +106,9 @@ class EditNameScreen extends StatelessWidget {
                                     horizontal: 10.0, vertical: 10.0),
                                 labelText: S.of(context).first_name,
                                 labelStyle: TextStyle(
-                                    fontSize: fontSize, color: Medium_Green),
+                                    fontSize: fontSize,
+                                    //  color: Medium_Green
+                                     ),
                                 hintText: cubit.userinfo!.f_name,
                                 floatingLabelBehavior:
                                     FloatingLabelBehavior.always,
@@ -129,7 +131,9 @@ class EditNameScreen extends StatelessWidget {
                                     horizontal: 10.0, vertical: 10.0),
                                 labelText: S.of(context).last_name,
                                 labelStyle: TextStyle(
-                                    fontSize: fontSize, color: Medium_Green),
+                                    fontSize: fontSize,
+                                    //  color: Medium_Green
+                                     ),
                                 hintText: cubit.userinfo!.l_name,
                                 floatingLabelBehavior:
                                     FloatingLabelBehavior.always,
@@ -281,7 +285,7 @@ class EditNameScreen extends StatelessWidget {
                                                                 Colors.white),
                                                       ),
                                                       minWidth: buttonWidth * 0.6,
-                                                      color: Medium_Green,
+                                                      // color: Medium_Green,
                                                       shape:
                                                           ContinuousRectangleBorder(
                                                         borderRadius:

@@ -114,7 +114,9 @@ class EditPassword extends StatelessWidget {
                                     horizontal: 10.0, vertical: 10.0),
                                 labelText: S.of(context).password,
                                 labelStyle: TextStyle(
-                                    fontSize: 25.0, color: Medium_Green),
+                                    fontSize: 25.0,
+                                    //  color: Medium_Green
+                                    ),
                                 hintText: "." *
                                     cubit.userinfo!.password.toString().length,
                                 hintStyle: TextStyle(
@@ -255,7 +257,7 @@ class EditPassword extends StatelessWidget {
                                                                       .white),
                                                             ),
                                                             minWidth: 60.0,
-                                                            color: Medium_Green,
+                                                            // color: Medium_Green,
                                                             shape:
                                                                 ContinuousRectangleBorder(
                                                               borderRadius:

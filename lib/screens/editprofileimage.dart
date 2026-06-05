@@ -56,8 +56,8 @@ class EditProfileImageScreen extends StatelessWidget {
                                 iconSize: 30.0,
                                 color: Colors.white,
                                 style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.all(Medium_Green),
+                                  // backgroundColor:
+                                      // MaterialStateProperty.all(Medium_Green),
                                 ),
                                 onPressed: () {
                                   cubit.uploadProfileImage();
@@ -73,8 +73,7 @@ class EditProfileImageScreen extends StatelessWidget {
                               ? defaultCircularProgressIndicator()
                               : ElevatedButton(
                                   style: ButtonStyle(
-                                    backgroundColor:
-                                        MaterialStatePropertyAll(Medium_Green),
+                                    // backgroundColor:MaterialStatePropertyAll(Medium_Green),
                                   ),
                                   onPressed: () {
                                     if (profileimage == null) {
