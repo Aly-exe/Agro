@@ -211,7 +211,7 @@ import 'package:agro/screens/diseaseAndtreatmentscreens/loose%20smut.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:tflite/tflite.dart';
+// import 'package:tflite/tflite.dart';
 
 class CustomScreen extends StatefulWidget {
   CustomScreen({super.key});
@@ -276,25 +276,25 @@ class _CustomScreenState extends State<CustomScreen> {
   }
 
   Future loadModel() async {
-    await Tflite.loadModel(
-            model: "assets/ML/model.tflite", labels: "assets/ML/labels.txt")
-        .then((value) {})
-        .catchError((error) {});
+    // await Tflite.loadModel(
+    //         model: "assets/ML/model.tflite", labels: "assets/ML/labels.txt")
+    //     .then((value) {})
+    //     .catchError((error) {});
   }
 
-  Future classifyImage(File image) async {
-    List<dynamic>? classify = await Tflite.runModelOnImage(
-      path: image.path,
-      numResults: 1,
-      threshold: 0.2,
-      imageMean: 255,
-      imageStd: 255,
-    );
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Diagnosing image...')),
-    );
-    return classify;
-  }
+  // Future classifyImage(File image) async {
+  //   List<dynamic>? classify = await Tflite.runModelOnImage(
+  //     path: image.path,
+  //     numResults: 1,
+  //     threshold: 0.2,
+  //     imageMean: 255,
+  //     imageStd: 255,
+  //   );
+  //   ScaffoldMessenger.of(context).showSnackBar(
+  //     SnackBar(content: Text('Diagnosing image...')),
+  //   );
+  //   return classify;
+  // }
 
   void _diagnoseImage() {
     ScaffoldMessenger.of(context).showSnackBar(
@@ -414,9 +414,9 @@ class _CustomScreenState extends State<CustomScreen> {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text("Please upload or take an image")));
                 } else {
-                  final val = await classifyImage(_image!);
+                  // final val = await classifyImage(_image!);
                   setState(() {
-                    output = val;
+                    // output = val;
                     if (output![0]["label"].toString() ==
                         "0 Crown and Root Rot") {
                       lastoutput = S.of(context).Crown_Root_Rot;

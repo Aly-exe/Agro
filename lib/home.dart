@@ -8,7 +8,7 @@ import 'package:agro/services/sharedpreferences.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:tflite/tflite.dart';
+// import 'package:tflite/tflite.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -45,27 +45,27 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future loadModel() async {
-    await Tflite.loadModel(
-            model: "assets/ML/model.tflite", labels: "assets/ML/labels.txt")
-        .then((value) {
-      log("Model loaded successfully");
-    }).catchError((error) {
-      log(error.toString());
-    });
+    // await Tflite.loadModel(
+    //         model: "assets/ML/model.tflite", labels: "assets/ML/labels.txt")
+    //     .then((value) {
+    //   log("Model loaded successfully");
+    // }).catchError((error) {
+    //   log(error.toString());
+    // });
   }
 
   File? img;
 
-  Future classifyImage(File image) async {
-    List<dynamic>? classify = await Tflite.runModelOnImage(
-      path: image.path,
-      numResults: 1,
-      threshold: 0.2,
-      imageMean: 255,
-      imageStd: 255,
-    );
-    return classify;
-  }
+  // Future classifyImage(File image) async {
+  //   List<dynamic>? classify = await Tflite.runModelOnImage(
+  //     path: image.path,
+  //     numResults: 1,
+  //     threshold: 0.2,
+  //     imageMean: 255,
+  //     imageStd: 255,
+  //   );
+  //   return classify;
+  // }
 
   @override
   void initState() {
@@ -219,9 +219,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text("Plaese upload or take an image ")));
                       } else {
-                        final val = await classifyImage(image!);
+                        // final val = await classifyImage(image!);
                         setState(() {
-                          output = val;
+                          // output = val;
                           if (output![0]["label"].toString() ==
                               "0 Crown and Root Rot") {
                             setState(() {
