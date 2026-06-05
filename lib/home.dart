@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:agro/screens/diseaseAndtreatmentscreens/crown%20and%20root%20rot.dart';
 import 'package:agro/generated/l10n.dart';
 import 'package:agro/screens/diseaseAndtreatmentscreens/leaf%20rust.dart';

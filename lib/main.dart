@@ -10,12 +10,17 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding
       .ensureInitialized(); // ensure all lines before runAPP() executed to run App
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await Supabase.initialize(
+    url: "https://jaknfdrigzqajpkyyruk.supabase.co",
+    publishableKey: "sb_publishable_-emey1iW8QKfPcvX4-x4mw_MPRJRBx6",
   );
   await CashHelper.init();
   CashHelper.getData(key: "lang") == null
