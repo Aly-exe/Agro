@@ -1,37 +1,35 @@
 import 'package:agro/features/classify/presentation/widgets/custombuttomnavigationbar.dart';
 import 'package:agro/features/classify/presentation/widgets/custtomAppBar.dart';
-import 'package:agro/features/classify/presentation/widgets/expertTipContainer.dart';
 import 'package:agro/features/classify/presentation/widgets/landingTextContainer.dart';
 import 'package:agro/features/classify/presentation/widgets/uploadandtakeimagecontainer.dart';
+import 'package:agro/features/classify/presentation/widgets/uploadedImageview.dart';
 import 'package:flutter/material.dart';
 
 class Homescreen extends StatelessWidget {
   const Homescreen({super.key});
-
+    final bool isImageLoaded = true;
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
       backgroundColor: Colors.white,
       appBar: CusttomAppBar(),
       body: Center(
         child: Column(
           children: [
             SizedBox(
-              height: 50,
+              height:isImageLoaded? 0 : 50,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 22),
-                  child:  const LandingTextContainer(name: "Ali"),
+                  child: isImageLoaded? const SizedBox.shrink() : const LandingTextContainer(name: "Ali"),
                 ),
                SizedBox(
                   height: 30,
                 ),
-                const UploadAndTakeImageContainer() , 
-                const SizedBox(height: 30,),
-                ExpertTipContainer()
+                 isImageLoaded ? const UploadedImageView() : const UploadAndTakeImageContainer(),
                 ],
             ),
           ],
