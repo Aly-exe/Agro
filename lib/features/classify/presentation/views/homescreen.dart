@@ -1,4 +1,5 @@
 import 'dart:developer';
+
 import 'package:agro/constants/colors.dart';
 import 'package:agro/features/classify/presentation/views/homeview.dart';
 import 'package:agro/features/classify/presentation/widgets/custtomAppBar.dart';
@@ -33,9 +34,10 @@ class _HomescreenState extends State<Homescreen> {
       },
       currentIndex: index,
       selectedItemColor: AppColors.primaryColor,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       items: [
         BottomNavigationBarItem(
+          backgroundColor: Colors.white,
           icon: SvgPicture.asset(
             "assets/icons/homeIcon.svg",
             height: 20,
@@ -44,6 +46,8 @@ class _HomescreenState extends State<Homescreen> {
           label: "HOME",
         ),
         BottomNavigationBarItem(
+                    backgroundColor: Colors.white,
+
           icon: SvgPicture.asset(
             "assets/icons/exploreIcon.svg",
             height: 20,
@@ -52,6 +56,8 @@ class _HomescreenState extends State<Homescreen> {
           label: "EXPLORE",
         ),
         BottomNavigationBarItem(
+                    backgroundColor: Colors.white,
+
           icon: SvgPicture.asset(
             "assets/icons/settingIcon.svg",
             height: 20,

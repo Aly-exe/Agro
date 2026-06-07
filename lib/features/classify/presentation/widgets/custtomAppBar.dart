@@ -8,7 +8,7 @@ class CusttomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => const Size.fromHeight(80);
+  Size get preferredSize => const Size.fromHeight(60);
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +47,8 @@ class CusttomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 title: "عربي",
               ),
             ],
-            width: 30,
-            borderRadius: 20,
+            width: 25,
+            borderRadius: 25,
             selectedIndex: 0,
             selectedBackgroundColors: [Colors.white70],
             unSelectedBackgroundColors: [Colors.white54],
@@ -68,10 +68,10 @@ class CusttomAppBar extends StatelessWidget implements PreferredSizeWidget {
               // Handle language change here
             },
           ),
-          SizedBox(width: 15,),
+          SizedBox(width: 20,),
           SvgPicture.asset(
             "assets/icons/burgerIcon.svg",
-            height: 16,
+            height: 14,
           ),
           
         ],
