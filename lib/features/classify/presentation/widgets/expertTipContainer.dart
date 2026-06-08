@@ -10,7 +10,7 @@ class ExpertTipContainer extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Container(
-        height: 150,
+        height: 140,
         decoration: BoxDecoration(
           color: AppColors.lightPrimaryColor,
           borderRadius: BorderRadius.all(Radius.circular(12)),

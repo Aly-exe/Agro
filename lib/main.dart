@@ -1,15 +1,8 @@
-import 'package:agro/Bloc/bloc.dart';
-import 'package:agro/Bloc/registerandloginBloc/registerandloginBloc.dart';
-import 'package:agro/Bloc/states.dart';
 import 'package:agro/features/classify/presentation/views/homescreen.dart';
 import 'package:agro/firebase_options.dart';
-import 'package:agro/generated/l10n.dart';
 import 'package:agro/services/sharedpreferences.dart';
-import 'package:agro/widgets/restartwidget.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
