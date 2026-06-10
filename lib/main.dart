@@ -1,4 +1,4 @@
-import 'package:agro/features/auth/presentation/views/siginupScreen.dart';
+import 'package:agro/features/auth/presentation/views/loginscreen.dart';
 import 'package:agro/firebase_options.dart';
 import 'package:agro/services/sharedpreferences.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Agro (wheat classification)",
-      home: SignUpScreen(),
+      home: Loginscreen(),
     );
   }
 }
