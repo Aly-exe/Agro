@@ -1,5 +1,6 @@
 import 'package:agro/constants/colors.dart';
 import 'package:agro/features/auth/presentation/views/siginupScreen.dart';
+import 'package:agro/features/auth/presentation/widgets/agroLandingContainer.dart';
 import 'package:agro/features/auth/presentation/widgets/customButton.dart';
 import 'package:agro/features/auth/presentation/widgets/customTextFormField.dart';
 import 'package:agro/features/auth/presentation/widgets/redirectionLine.dart';
@@ -20,29 +21,7 @@ class Loginscreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-                padding: EdgeInsets.all(12),
-                height: 60,
-                decoration: BoxDecoration(
-                    color: AppColors.lightPrimaryColor,
-                    borderRadius: BorderRadius.circular(10)),
-                child: SvgPicture.asset(
-                  "assets/icons/carLoaderIcon.svg",
-                )),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              "Agro",
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.lightPrimaryColor,
-                  fontFamily: "Manrope"),
-            ),
-            SizedBox(
-              height: 10,
-            ),
+            const AgroLandingContainer(),
             CustomTextFormField(
               hintText: "alibnraslan@gmail.com",
               label: "Email Adress",
