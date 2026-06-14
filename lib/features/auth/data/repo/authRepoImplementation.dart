@@ -1,4 +1,3 @@
-import 'package:agro/features/auth/data/models/userModel.dart';
 import 'package:agro/features/auth/data/repo/authRepo.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -7,7 +6,7 @@ class AuthRepoImplementation implements AuthRepo {
   @override
   Future login(String email, String password) async {
     try {
-      await supabase.auth.signUp(
+      await supabase.auth.signInWithPassword(
         email: email,
         password: password,
       );

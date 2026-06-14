@@ -2,7 +2,6 @@ import 'package:agro/constants/colors.dart';
 import 'package:agro/core/services/navigate.dart';
 import 'package:agro/core/services/topsnackbar.dart';
 import 'package:agro/features/auth/presentation/view_models/cubit/auth_cubit.dart';
-import 'package:agro/features/auth/presentation/views/addnamescreen.dart';
 import 'package:agro/features/auth/presentation/views/loginscreen.dart';
 import 'package:agro/features/auth/presentation/widgets/agroLandingContainer.dart';
 import 'package:agro/features/auth/presentation/widgets/customButton.dart';
@@ -86,8 +85,11 @@ class SignUpScreen extends StatelessWidget {
                                   showSuccessTopSnackBar(context,
                                       "Successfull SignUp , Confirm your Email And add your name now");
                                   navigateToandReplace(
-                                      context, AddNameScreen());
-                                } catch (e) {}
+                                      context, Loginscreen());
+                                } catch (e) {
+                                  showErrorTopSnackBar(context,
+                                      "SignUp Faild!\n ${e.toString()}");
+                                }
                               }
                             },
                             text: "Sign Up");
