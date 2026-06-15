@@ -9,7 +9,11 @@ final class SuccessSignUpState extends AuthCubitState {}
 final class FailedSignUpState extends AuthCubitState {}
 final class LoadingLoginState extends AuthCubitState {}
 final class SuccessLoginState extends AuthCubitState {}
-final class FailedLoginState extends AuthCubitState {}
+final class FailedLoginState extends AuthCubitState {
+  final String errormessage;
+  FailedLoginState(this.errormessage);
+}
 final class LoadingCreateUserState extends AuthCubitState {}
 final class SuccessCreateUserState extends AuthCubitState {}
 final class FailedCreateUserState extends AuthCubitState {}
+final class SuccessTooggleState extends AuthCubitState {}

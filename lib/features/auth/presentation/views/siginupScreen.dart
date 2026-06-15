@@ -15,7 +15,6 @@ class SignUpScreen extends StatelessWidget {
   final formkey = GlobalKey<FormState>();
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +38,7 @@ class SignUpScreen extends StatelessWidget {
                       return "not valid email";
                     }
                   },
-                  controller: email,
+                  controller:email,
                   hintText: "alibnraslan@gmail.com",
                   label: "Email Adress",
                   prefixIcon: "assets/icons/mailIocn.svg",
@@ -47,25 +46,34 @@ class SignUpScreen extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                CustomTextFormField(
-                  controller: password,
-                  validator: (value) {
-                    if (value == "") {
-                      return "password required";
-                    } else if (value!.length < 8) {
-                      return "Password must be at least 8 character";
-                    }
+                BlocBuilder<AuthCubit, AuthCubitState>(
+                  builder: (context, state) {
+                    final cubit = context.read<AuthCubit>();
+                    return CustomTextFormField(
+                      controller: password,
+                      validator: (value) {
+                        if (value == "") {
+                          return "password required";
+                        } else if (value!.length < 8) {
+                          return "Password must be at least 8 character";
+                        }
+                      },
+                      label: "Password",
+                      hintText: "",
+                      prefixIcon: "assets/icons/lockIcon.svg",
+                      obscureText: cubit.isSecure,
+                      suffixIcon: IconButton(
+                          onPressed: () {
+                            cubit.toggleEyePasswordIcon();
+                          },
+                          icon: Icon(
+                            cubit.isSecure
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: AppColors.LightGreyTextColor,
+                          )),
+                    );
                   },
-                  label: "Password",
-                  hintText: "",
-                  prefixIcon: "assets/icons/lockIcon.svg",
-                  obscureText: true,
-                  suffixIcon: IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.remove_red_eye_outlined,
-                        color: AppColors.LightGreyTextColor,
-                      )),
                 ),
                 SizedBox(height: 20),
                 BlocBuilder<AuthCubit, AuthCubitState>(
@@ -84,8 +92,7 @@ class SignUpScreen extends StatelessWidget {
                                       .signUp(email.text, password.text);
                                   showSuccessTopSnackBar(context,
                                       "Successfull SignUp , Confirm your Email And add your name now");
-                                  navigateToandReplace(
-                                      context, Loginscreen());
+                                  navigateToandReplace(context, Loginscreen());
                                 } catch (e) {
                                   showErrorTopSnackBar(context,
                                       "SignUp Faild!\n ${e.toString()}");

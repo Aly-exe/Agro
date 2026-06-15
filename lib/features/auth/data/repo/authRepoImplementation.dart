@@ -16,7 +16,7 @@ class AuthRepoImplementation implements AuthRepo {
   }
 
   @override
-  Future signUp(email , password) async {
+  Future signUp(email, password) async {
     try {
       await supabase.auth.signUp(
         email: email,

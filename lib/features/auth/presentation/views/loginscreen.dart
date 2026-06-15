@@ -48,53 +48,62 @@ class Loginscreen extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                CustomTextFormField(
-                  controller: password,
-                  validator: (value) {
-                    if (value == "") {
-                      return "password required";
-                    } else if (value!.length < 8) {
-                      return "Password must be at least 8 character";
-                    }
-                  },
-                  label: "Password",
-                  hintText: "",
-                  prefixIcon: "assets/icons/lockIcon.svg",
-                  obscureText: true,
-                  suffixIcon: IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.remove_red_eye_outlined,
-                        color: AppColors.LightGreyTextColor,
-                      )),
-                ),
-                SizedBox(height: 20),
                 BlocBuilder<AuthCubit, AuthCubitState>(
                   builder: (context, state) {
-                    return state is LoadingLoginState
-                        ? Center(
-                            child: CircularProgressIndicator(
-                              color: AppColors.lightPrimaryColor,
-                            ),
-                          )
-                        : CustomButton(
-                            onPressed: () async {
-                              if (formkey.currentState!.validate()) {
-                                try {
-                                  await AuthCubit.get(context)
-                                      .login(email.text, password.text);
-                                  showSuccessTopSnackBar(
-                                      context, "Login Done Successfully");
-                                  navigateToandReplace(context, Homescreen());
-                                } catch (e) {
-                                  showErrorTopSnackBar(context,
-                                      "Login Faild!\n ${e.toString()}");
-                                }
-                              }
-                            },
-                            text: "Login");
+                    final cubit = context.read<AuthCubit>();
+                    return CustomTextFormField(
+                      controller: password,
+                      validator: (value) {
+                        if (value == "") {
+                          return "password required";
+                        } else if (value!.length < 8) {
+                          return "Password must be at least 8 character";
+                        }
+                      },
+                      label: "Password",
+                      hintText: "",
+                      prefixIcon: "assets/icons/lockIcon.svg",
+                      obscureText: cubit.isSecure,
+                      suffixIcon: IconButton(
+                          onPressed: () {
+                            cubit.toggleEyePasswordIcon();
+                          },
+                          icon: Icon(
+                            cubit.isSecure
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: AppColors.LightGreyTextColor,
+                          )),
+                    );
                   },
                 ),
+                SizedBox(height: 20),
+                BlocConsumer<AuthCubit, AuthCubitState>(
+                    listener: (context, state) {
+                  if (state is SuccessLoginState) {
+                    showSuccessTopSnackBar(context, "Login Done Successfully");
+                    navigateToandReplace(context, Homescreen());
+                  } else if (state is FailedLoginState) {
+                    showErrorTopSnackBar(context,
+                        "Login Faild!\nEmail or Password incorrect please try Again!");
+                  }
+                }, builder: (context, state) {
+                  return state is LoadingLoginState
+                      ? Center(
+                          child: CircularProgressIndicator(
+                            color: AppColors.lightPrimaryColor,
+                          ),
+                        )
+                      : CustomButton(
+                          onPressed: () async {
+                            if (formkey.currentState!.validate()) {
+                              await context
+                                  .read<AuthCubit>()
+                                  .login(email.text, password.text);
+                            }
+                          },
+                          text: "Login");
+                }),
                 SizedBox(
                   height: 30,
                 ),
