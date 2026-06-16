@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class UploadedImageView extends StatelessWidget {
-  const UploadedImageView({super.key ,required this.imagePath});
+  const UploadedImageView(
+      {super.key, required this.imagePath, this.removeImage , this.classifyImageByAI});
   final String imagePath;
+  final void Function()? removeImage;
+  final void Function()? classifyImageByAI;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -41,9 +44,7 @@ class UploadedImageView extends StatelessWidget {
           height: 5,
         ),
         InkWell(
-          onTap: () {
-            // Handle analyze button tap
-          },
+          onTap: classifyImageByAI,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Container(
@@ -73,21 +74,25 @@ class UploadedImageView extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset("assets/icons/reloadIcon.svg" , color: Colors.green,),
-            const SizedBox(
-              width: 10,
-            ),
-            const Text(
-              "Reupload Photo",
-              style: TextStyle(
-                  color: Colors.green,
-                  fontSize: 16,
-                  fontFamily: 'Monrope'),
-            ),
-          ],
+        InkWell(
+          onTap: removeImage,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset(
+                "assets/icons/reloadIcon.svg",
+                color: Colors.green,
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              const Text(
+                "Reupload Photo",
+                style: TextStyle(
+                    color: Colors.green, fontSize: 16, fontFamily: 'Monrope'),
+              ),
+            ],
+          ),
         )
       ],
     );

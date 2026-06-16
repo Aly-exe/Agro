@@ -1,5 +1,4 @@
-import 'package:agro/features/auth/presentation/views/loginscreen.dart';
-import 'package:agro/services/sharedpreferences.dart';
+import 'package:agro/features/classify/presentation/views/homescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -56,7 +55,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Agro (wheat classification)",
-      home: Loginscreen(),
+      home: Homescreen(),
     );
   }
 }
+

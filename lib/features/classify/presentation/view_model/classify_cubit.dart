@@ -12,18 +12,37 @@ class ClassifyCubit extends Cubit<ClassifyCubitState> {
    String? imagePath;
 
   Future<XFile> uploadImageFromGallary() async {
-    emit(LoadingUploadImageFromCameraState());
+    emit(LoadingUploadImageFromGallaryState());
     try {
       XFile image = await classifyrepo.uploadImageFromGallary();
       imagePath = image.path;
       isImageLoaded = true;
       log("Image Uploaded Succefull");
-      emit(SucessUploadImageFromCameraState());
+      emit(SucessUploadImageFromGallaryState());
       return image;
     } catch (e) {
       log("faild ${e}");
-      emit(FailedUploadImageFromCameraState(e.toString()));
+      emit(FailedUploadImageFromGallaryState(e.toString()));
       rethrow;
     }
+  }
+  Future<XFile> takeImagebyCamera() async {
+    emit(LoadingTakeImagByCameraState());
+    try {
+      XFile image = await classifyrepo.takeImageByCamera();
+      imagePath = image.path;
+      isImageLoaded = true;
+      log("Image Uploaded Succefull");
+      emit(SucessTakeImageByCameraState());
+      return image;
+    } catch (e) {
+      log("faild ${e}");
+      emit(FailedTakeImageByCameraState(e.toString()));
+      rethrow;
+    }
+  }
+  void removeImage(){
+    isImageLoaded= false;
+    emit(SuccessRemoveImageState());
   }
 }

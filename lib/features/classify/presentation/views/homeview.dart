@@ -35,10 +35,10 @@ class HomeView extends StatelessWidget {
               height: 30,
             ),
             isImageLoaded
-                ?  UploadedImageView(imagePath: cubit.imagePath!)
+                ?  UploadedImageView(imagePath: cubit.imagePath! , removeImage: cubit.removeImage,)
                 :  UploadAndTakeImageContainer(
                   onCameraIconClick: ()async{
-                    
+                    XFile image = await cubit.takeImagebyCamera();
                   },
                   onFileIconClick: ()async{
                     XFile image = await cubit.uploadImageFromGallary();
