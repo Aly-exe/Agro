@@ -9,10 +9,10 @@ void main() async {
     url: "https://jaknfdrigzqajpkyyruk.supabase.co",
     publishableKey: "sb_publishable_-emey1iW8QKfPcvX4-x4mw_MPRJRBx6",
   );
-  await CashHelper.init();
-  CashHelper.getData(key: "lang") == null
-      ? CashHelper.setData(key: "lang", value: "ar")
-      : CashHelper.getData(key: "lang");
+  // await CashHelper.init();
+  // CashHelper.getData(key: "lang") == null
+      // ? CashHelper.setData(key: "lang", value: "ar")
+      // : CashHelper.getData(key: "lang");
   runApp(MyApp());
 }
 

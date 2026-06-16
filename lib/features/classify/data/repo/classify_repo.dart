@@ -1,6 +1,8 @@
+import 'package:image_picker/image_picker.dart';
+
 abstract class ClassifyRepo {
-  void uploadImage(){}
-  void takeImage(){}
-  void deletImage(){}
-  void classifyImage(){}
+  Future<XFile>? uploadImageFromGallary(){}
+  Future<XFile>? takeImageByCamera(){}
+  Future? deletImage(){}
+  Future? classifyImage(){}
 }

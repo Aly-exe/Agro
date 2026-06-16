@@ -1,10 +1,11 @@
+import 'dart:io';
 import 'package:agro/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class UploadedImageView extends StatelessWidget {
-  const UploadedImageView({super.key});
-
+  const UploadedImageView({super.key ,required this.imagePath});
+  final String imagePath;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -17,7 +18,8 @@ class UploadedImageView extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
-                  image: AssetImage("assets/images/wheat.png"),
+                  // image: AssetImage("assets/images/wheat.png"),
+                  image: FileImage(File(imagePath)),
                   fit: BoxFit.cover)),
         ),
         const SizedBox(

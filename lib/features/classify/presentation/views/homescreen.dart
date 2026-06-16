@@ -1,11 +1,12 @@
 import 'dart:developer';
-
 import 'package:agro/constants/colors.dart';
+import 'package:agro/features/classify/presentation/view_model/classify_cubit.dart';
 import 'package:agro/features/classify/presentation/views/homeview.dart';
 import 'package:agro/features/classify/presentation/widgets/custtomAppBar.dart';
 import 'package:agro/features/explore/presentation/views/exploreScreen.dart';
 import 'package:agro/features/user/presentation/views/SettingsScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class Homescreen extends StatefulWidget {
@@ -20,53 +21,56 @@ class _HomescreenState extends State<Homescreen> {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      backgroundColor: Colors.white,
-      appBar: CusttomAppBar(),
-      body: index == 0 ? HomeView() : index== 1 ? Explorescreen() : SettingsScreen(), 
-      bottomNavigationBar: BottomNavigationBar(
-      type: BottomNavigationBarType.shifting,
-      onTap: (value){
-        setState(() {
-          index = value;
-        });
-        log("index: $index");
-      },
-      currentIndex: index,
-      selectedItemColor: AppColors.primaryColor,
-      backgroundColor: Colors.transparent,
-      items: [
-        BottomNavigationBarItem(
-          backgroundColor: Colors.white,
-          icon: SvgPicture.asset(
-            "assets/icons/homeIcon.svg",
-            height: 20,
-            color: Color(0xff414844),
+    return  BlocProvider(
+      create: (_)=> ClassifyCubit(),
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: CusttomAppBar(),
+        body: index == 0 ? HomeView() : index== 1 ? Explorescreen() : SettingsScreen(), 
+        bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.shifting,
+        onTap: (value){
+          setState(() {
+            index = value;
+          });
+          log("index: $index");
+        },
+        currentIndex: index,
+        selectedItemColor: AppColors.primaryColor,
+        backgroundColor: Colors.transparent,
+        items: [
+          BottomNavigationBarItem(
+            backgroundColor: Colors.white,
+            icon: SvgPicture.asset(
+              "assets/icons/homeIcon.svg",
+              height: 20,
+              color: Color(0xff414844),
+            ),
+            label: "HOME",
           ),
-          label: "HOME",
-        ),
-        BottomNavigationBarItem(
-                    backgroundColor: Colors.white,
-
-          icon: SvgPicture.asset(
-            "assets/icons/exploreIcon.svg",
-            height: 20,
-            color: Color(0xff414844),
+          BottomNavigationBarItem(
+                      backgroundColor: Colors.white,
+      
+            icon: SvgPicture.asset(
+              "assets/icons/exploreIcon.svg",
+              height: 20,
+              color: Color(0xff414844),
+            ),
+            label: "EXPLORE",
           ),
-          label: "EXPLORE",
-        ),
-        BottomNavigationBarItem(
-                    backgroundColor: Colors.white,
-
-          icon: SvgPicture.asset(
-            "assets/icons/settingIcon.svg",
-            height: 20,
-            color: Color(0xff414844),
+          BottomNavigationBarItem(
+                      backgroundColor: Colors.white,
+      
+            icon: SvgPicture.asset(
+              "assets/icons/settingIcon.svg",
+              height: 20,
+              color: Color(0xff414844),
+            ),
+            label: "SETTINGS",
           ),
-          label: "SETTINGS",
-        ),
-      ],
-    ),
+        ],
+      ),
+      ),
     );
   }
 }
