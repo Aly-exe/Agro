@@ -4,5 +4,5 @@ abstract class ClassifyRepo {
   Future<XFile>? uploadImageFromGallary(){}
   Future<XFile>? takeImageByCamera(){}
   Future? deletImage(){}
-  Future? classifyImage(){}
+  Future? classifyImage(img){}
 }
