@@ -1,10 +1,9 @@
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:agro/features/classify/data/repo/classify_repo.dart';
+import 'package:image/image.dart' as img;
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
-import 'package:image/image.dart' as img;
 
 class ClassifyRepoImplementation implements ClassifyRepo {
   final picker = ImagePicker();
@@ -32,18 +31,14 @@ class ClassifyRepoImplementation implements ClassifyRepo {
         });
       })
     ];
-
-    // log("Inputs ${input}");
-    final  output = [List<double>.filled(4, 0)];
-    
-    
-    
+    final output = [List<double>.filled(4, 0)];
     try {
       interpreter.run(input, output);
       final List<String> wheatClassificationList = ["Crown and Root Rot", "Healthy Wheat", "Leaf Rust","Wheat Loose Smut"];
       int predictionIndex = 0;
-    
-      for (int i = 0 ; i < output.first.length; ){
+
+    log("Output is ${output.toString()}");
+      for (int i = 0 ; i < output.first.length; i++ ){
         if(output.first[i] > output.first[predictionIndex]){
           predictionIndex = i;
         }
