@@ -1,3 +1,4 @@
+import 'package:agro/features/explore/data/models/wheat_model.dart';
 import 'package:agro/features/explore/presentation/widgets/CustominfoContainer.dart';
 import 'package:flutter/material.dart';
 
@@ -60,13 +61,17 @@ class Explorescreen extends StatelessWidget {
             padding: const EdgeInsets.all(15.0),
             child: ListView.builder(
                 physics: BouncingScrollPhysics(),
-                itemCount: 20,
-                itemBuilder: (index, context) {
+                itemCount: wheatDataList.length,
+                itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.only(
                       bottom: 8.0,
                     ),
-                    child: CustomInfoContainer(),
+                    child: CustomInfoContainer(
+                      imageLink: wheatDataList[index].img,
+                      description: wheatDataList[index].details,
+                      title: wheatDataList[index].title,
+                    ),
                   );
                 }),
           ),
