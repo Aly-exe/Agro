@@ -1,6 +1,4 @@
 import 'dart:developer';
-import 'dart:io';
-
 import 'package:agro/features/classify/data/repo/classify_repo_implementation.dart';
 import 'package:agro/features/classify/presentation/view_model/classify_cubit_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,5 +43,17 @@ class ClassifyCubit extends Cubit<ClassifyCubitState> {
   void removeImage(){
     isImageLoaded= false;
     emit(SuccessRemoveImageState());
+  }
+
+  Future<String> classifyImage(String imagePath)async{
+    emit(LoadingClassifyImageState());
+    try{
+      final String result = await classifyrepo.classifyImage(imagePath);
+      emit(SucessClassifyImageState());
+      return result; 
+    }catch(e){
+      emit(FailedClassifyImageState(e.toString()));
+      return e.toString();
+    }
   }
 }

@@ -14,3 +14,9 @@ class FailedUploadImageFromGallaryState extends ClassifyCubitState{
   final String errorMessage;
   FailedUploadImageFromGallaryState(this.errorMessage); 
 }
+class LoadingClassifyImageState extends ClassifyCubitState{}
+class SucessClassifyImageState extends ClassifyCubitState{}
+class FailedClassifyImageState extends ClassifyCubitState{
+  final String errorMessage;
+  FailedClassifyImageState(this.errorMessage); 
+}

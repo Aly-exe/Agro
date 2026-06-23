@@ -1,7 +1,9 @@
+import 'package:agro/core/services/navigate.dart';
 import 'package:agro/features/classify/data/repo/classify_repo.dart';
 import 'package:agro/features/classify/data/repo/classify_repo_implementation.dart';
 import 'package:agro/features/classify/presentation/view_model/classify_cubit.dart';
 import 'package:agro/features/classify/presentation/view_model/classify_cubit_states.dart';
+import 'package:agro/features/classify/presentation/views/wheat_classification_view.dart';
 import 'package:agro/features/classify/presentation/widgets/landingTextContainer.dart';
 import 'package:agro/features/classify/presentation/widgets/uploadandtakeimagecontainer.dart';
 import 'package:agro/features/classify/presentation/widgets/uploadedImageview.dart';
@@ -19,7 +21,6 @@ class HomeView extends StatelessWidget {
       builder: (context, state) {
         final cubit = context.read<ClassifyCubit>();
         bool isImageLoaded = cubit.isImageLoaded;
-        // File image = File(cubit.imagePath!);
         return Column(
           children: [
             SizedBox(
@@ -39,7 +40,13 @@ class HomeView extends StatelessWidget {
                     imagePath: cubit.imagePath!,
                     removeImage: cubit.removeImage,
                     classifyImageByAI: () async {
-                     await ClassifyRepoImplementation().classifyImage(cubit.imagePath);
+                      await cubit.classifyImage(cubit.imagePath!).then((val) {
+                        navigateToandReplace(
+                            context,
+                            WheatClassificationView(
+                                classificationResult: val,
+                                image: cubit.imagePath!));
+                      });
                     },
                   )
                 : UploadAndTakeImageContainer(

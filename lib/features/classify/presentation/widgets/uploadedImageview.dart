@@ -1,11 +1,15 @@
 import 'dart:io';
 import 'package:agro/constants/colors.dart';
+import 'package:agro/features/classify/presentation/widgets/custtom_app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class UploadedImageView extends StatelessWidget {
   const UploadedImageView(
-      {super.key, required this.imagePath, this.removeImage , this.classifyImageByAI});
+      {super.key,
+      required this.imagePath,
+      this.removeImage,
+      this.classifyImageByAI});
   final String imagePath;
   final void Function()? removeImage;
   final void Function()? classifyImageByAI;
@@ -43,34 +47,10 @@ class UploadedImageView extends StatelessWidget {
         const SizedBox(
           height: 5,
         ),
-        InkWell(
-          onTap: classifyImageByAI,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-                decoration: BoxDecoration(
-                  color: AppColors.lightPrimaryColor,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset("assets/icons/classifyIcon.svg"),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    const Text(
-                      "CLassify Now",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontFamily: 'Monrope'),
-                    )
-                  ],
-                )),
-          ),
-        ),
+        CusttomAppButton(
+            onTap: classifyImageByAI,
+            text: "Classify Now",
+            icon: "assets/icons/classifyIcon.svg"),
         const SizedBox(
           height: 10,
         ),

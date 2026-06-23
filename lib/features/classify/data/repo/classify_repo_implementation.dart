@@ -9,8 +9,9 @@ class ClassifyRepoImplementation implements ClassifyRepo {
   final picker = ImagePicker();
 
   @override
-  Future classifyImage(imagePath) async {
+  Future<String> classifyImage(imagePath) async {
     final image = File(imagePath);
+    final List<String> wheatClassificationList = ["Crown and Root Rot", "Healthy Wheat", "Leaf Rust","Wheat Loose Smut"];
     var interpreter = await Interpreter.fromAsset("assets/ML/model.tflite");
     final decoededImage = img.decodeImage(image.readAsBytesSync());
     final resized = img.copyResize(
@@ -32,10 +33,9 @@ class ClassifyRepoImplementation implements ClassifyRepo {
       })
     ];
     final output = [List<double>.filled(4, 0)];
+    int predictionIndex = 0;
     try {
       interpreter.run(input, output);
-      final List<String> wheatClassificationList = ["Crown and Root Rot", "Healthy Wheat", "Leaf Rust","Wheat Loose Smut"];
-      int predictionIndex = 0;
 
     log("Output is ${output.toString()}");
       for (int i = 0 ; i < output.first.length; i++ ){
@@ -50,6 +50,7 @@ class ClassifyRepoImplementation implements ClassifyRepo {
     }
     // log("${output.first}");
     interpreter.close();
+    return wheatClassificationList[predictionIndex];
   }
 
   @override
