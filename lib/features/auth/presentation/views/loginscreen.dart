@@ -82,7 +82,7 @@ class Loginscreen extends StatelessWidget {
                     listener: (context, state) {
                   if (state is SuccessLoginState) {
                     showSuccessTopSnackBar(context, "Login Done Successfully");
-                    navigateToandReplace(context, Homescreen());
+                    // navigateToandReplace(context, Homescreen());
                   } else if (state is FailedLoginState) {
                     showErrorTopSnackBar(context,
                         "Login Faild!\nEmail or Password incorrect please try Again!");

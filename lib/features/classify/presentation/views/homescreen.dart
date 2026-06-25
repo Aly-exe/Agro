@@ -10,14 +10,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class Homescreen extends StatefulWidget {
-  const Homescreen({super.key});
+  const Homescreen({super.key , required this.name});
 
   @override
   State<Homescreen> createState() => _HomescreenState();
+    final String name ;
 }
 
 class _HomescreenState extends State<Homescreen> {
     int index = 0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class _HomescreenState extends State<Homescreen> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: CusttomAppBar(),
-        body: index == 0 ? HomeView() : index== 1 ? Explorescreen() : SettingsScreen(), 
+        body: index == 0 ? HomeView(name: widget.name,) : index== 1 ? Explorescreen() : SettingsScreen(), 
         bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.shifting,
         onTap: (value){

@@ -1,6 +1,4 @@
 import 'package:agro/core/services/navigate.dart';
-import 'package:agro/features/classify/data/repo/classify_repo.dart';
-import 'package:agro/features/classify/data/repo/classify_repo_implementation.dart';
 import 'package:agro/features/classify/presentation/view_model/classify_cubit.dart';
 import 'package:agro/features/classify/presentation/view_model/classify_cubit_states.dart';
 import 'package:agro/features/classify/presentation/views/wheat_classification_view.dart';
@@ -12,8 +10,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
-
+  const HomeView({super.key , required this.name});
+  final String name ;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ClassifyCubit, ClassifyCubitState>(
@@ -30,7 +28,7 @@ class HomeView extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 22),
               child: isImageLoaded
                   ? const SizedBox.shrink()
-                  : const LandingTextContainer(name: "Ali"),
+                  :  LandingTextContainer(name: name),
             ),
             SizedBox(
               height: 30,

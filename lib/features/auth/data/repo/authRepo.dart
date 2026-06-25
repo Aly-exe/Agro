@@ -1,7 +1,9 @@
-
-
 abstract class AuthRepo {
-  Future signUp(email , password);
-  Future createUser(id, name, email);
-  Future login(String email , String password);
+  Future<void> createProfile({
+    required String name,
+    required  user,
+  });
+
+  Future signUp(email, password);
+  Future login(String email, String password);
 }

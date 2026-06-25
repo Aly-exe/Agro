@@ -6,11 +6,11 @@ class LandingTextContainer extends StatelessWidget {
   final String name; 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Good morning, Ali",
+                        "Good morning, ${name}",
                         style: TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.bold,

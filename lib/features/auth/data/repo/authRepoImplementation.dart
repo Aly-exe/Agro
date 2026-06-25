@@ -27,17 +27,20 @@ class AuthRepoImplementation implements AuthRepo {
     }
   }
 
-  @override
-  Future createUser(id, name, email) async {
-    // TODO: implement createUser
-    try {
-      await supabase.from("users").insert({
-        'id': id,
-        'name': name,
-        'email': email,
-      });
-    } catch (e) {
-      throw ("Failed Sign Up , {$e}");
-    }
+   @override
+  Future<void> createProfile({
+    required String name,
+    required user
+  }) async {
+    
+
+    await supabase.from('profiles').insert({
+      'id': user.id,
+      'email': user.email,
+      'full_name': name,
+      'avatar_url': null,
+    });
   }
+  
+  
 }

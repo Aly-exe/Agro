@@ -32,7 +32,7 @@ class WheatClassificationView extends StatelessWidget {
             : DiseasedWheatView(image: image , wheatClassification: classificationResult,),
             SizedBox(height: 20,),
             CusttomAppButton(onTap: (){
-              navigateToandReplace(context, Homescreen());
+              // navigateToandReplace(context, Homescreen());
             }, text: "Classify Another", icon: "assets/icons/classifyIcon.svg")
           ],
         ),

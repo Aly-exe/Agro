@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:agro/features/auth/data/repo/authRepoImplementation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 part 'auth_cubit_state.dart';
 
 class AuthCubit extends Cubit<AuthCubitState> {
@@ -15,21 +16,24 @@ class AuthCubit extends Cubit<AuthCubitState> {
     emit(LoadingSignUpState());
     try {
       final response = await authRepoImplementation.signUp(email, password);
-      log("email : ${email}\n password : ${password} \n${response}");
+      log("${response.toString()}");
       emit(SuccessSignUpState());
     } catch (e) {
-      log("email : ${email}\n password : ${password} \n${e.toString()}");
-      emit(FailedSignUpState());
+      log("${e.toString()}");
+      emit(FailedSignUpState(e.toString()));
     }
   }
 
-  Future createUser(id, name, email) async {
+  Future createUser(name) async {
     emit(LoadingCreateUserState());
     try {
-      await authRepoImplementation.createUser(id, name, email);
+      final user = Supabase.instance.client.auth.currentUser;
+      log("user id : ${user?.id}");
+      log("user email : ${user?.email}");
+      await authRepoImplementation.createProfile(name: name , user: user);
       emit(SuccessCreateUserState());
     } catch (e) {
-      emit(FailedCreateUserState());
+      emit(FailedCreateUserState(e.toString()));
     }
   }
 
@@ -47,7 +51,7 @@ class AuthCubit extends Cubit<AuthCubitState> {
 
   void toggleEyePasswordIcon() {
     isSecure = !isSecure;
-      log("${isSecure}");
-      emit(SuccessTooggleState());
+    log("${isSecure}");
+    emit(SuccessTooggleState());
   }
 }
