@@ -1,5 +1,5 @@
 import 'package:agro/features/auth/presentation/views/siginupScreen.dart';
-import 'package:agro/features/classify/presentation/views/homescreen.dart';
+import 'package:agro/services/sharedpreferences.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -9,10 +9,7 @@ void main() async {
     url: "https://jaknfdrigzqajpkyyruk.supabase.co",
     publishableKey: "sb_publishable_-emey1iW8QKfPcvX4-x4mw_MPRJRBx6",
   );
-  // await CashHelper.init();
-  // CashHelper.getData(key: "lang") == null
-      // ? CashHelper.setData(key: "lang", value: "ar")
-      // : CashHelper.getData(key: "lang");
+  await CashHelper.init();
   runApp(MyApp());
 }
 
