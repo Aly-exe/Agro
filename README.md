@@ -1,16 +1,11 @@
-# agro
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Agro
+Agro an Ai_powerd Application (Discover Diseased Wheat plants and provide treatment) it's working by providing plant's image to Ai_Model and classify wheat plant to (healthy || diseased), For diseased plants app display disease (name , description , treatment) , provide audio_player for unlearned user , display Some informations About wheat plant via Huge amount of data , display App by two language (Arabic , English) .
+## Features :
+- Ai Integration
+- Localization
+- StateManagement (Cubit)
+- Clean Architicure
+- SupaBase Auth
+- SupaBase Database
+- SupaBase Avatars
+- Cashing
